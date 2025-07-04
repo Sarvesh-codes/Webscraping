@@ -82,15 +82,13 @@ for i in series_selector:
 
             df = pd.DataFrame(rows)
 
-            sanitized_main = sanitize(main_heading)
-            sanitized_sub = sanitize(sub_heading)
+            cleaned_main = sanitize(main_heading)
+            cleaned_sub = sanitize(sub_heading)
 
-            counter = 1
-            while True:
-                filename = f"{sanitized_main}_{sanitized_sub}_{counter}.csv"
-                if not os.path.exists(filename):
-                    break
-                counter += 1
+            if cleaned_main==cleaned_sub:
+                filename = f"{cleaned_main}.csv"
+            else:
+                filename = f"{cleaned_main}_{cleaned_sub}.csv"
 
             df.to_csv(filename, index=False)
             print(f"Data saved to {filename}")
@@ -136,15 +134,13 @@ for i in series_selector:
 
         df = pd.DataFrame(rows)
 
-        sanitized_main = sanitize(main_heading)
-        sanitized_sub = sanitize(sub_heading)
+        cleaned_main = sanitize(main_heading)
+        cleaned_sub = sanitize(sub_heading)
 
-        counter = 1
-        while True:
-            filename = f"{sanitized_main}_{sanitized_sub}_{counter}.csv"
-            if not os.path.exists(filename):
-                break
-            counter += 1
+        if cleaned_main == cleaned_sub:
+            filename = f"{cleaned_main}.csv"
+        else:
+            filename = f"{cleaned_main}_{cleaned_sub}.csv"
 
         df.to_csv(filename, index=False)
         print(f"Data saved to {filename}")
